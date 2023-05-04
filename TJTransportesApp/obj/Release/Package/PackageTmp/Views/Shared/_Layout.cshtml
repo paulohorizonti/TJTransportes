@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="~/Content/SideBar/css/styles.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="bg-dark" id="sidebar-wrapper">
+            <div class="sidebar-heading border-0 bg-prn">
+                <a class="navbar-brand ml-1"  href="@Url.Action("Index","Home")">
+                    <img src="~/Content/Img/logo2.png" width="200" class="d-inline-block align-top ml-" style="margin-left: -20px;" alt="" />
+                </a>
+            </div>
+            <div class="list-group list-group-flush">
+
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="panelsStayOpen-dashboard">
+                            <button class="accordion-button  collapsed  prn-fonte bg-prn-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseDashboard" aria-expanded="true" aria-controls="panelsStayOpen-collapseDashboard">
+                                <i class="fas fa-tachometer-alt prn-cor-icone"></i>&nbsp;  DASHBOARD
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseDashboard" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-dashboard">
+                            <div class="accordion-body prn-bgsidebar">
+                                <div class="pr-fundo-li">
+                                    <ul class="nav flex-column pr-fundo-ul">
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-map-marked-alt"></i>&nbsp;Viagens</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-money-check-alt"></i> Contas a Pagar</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-money-bill-wave"></i> Contas a Receber</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-shipping-fast"></i> Veículos</a> </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingCadastros">
+                            <button class="accordion-button collapsed prn-fonte bg-prn-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseCad" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                <i class="fas fa-cogs"></i>&nbsp;  CADASTROS
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseCad" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingCadastros">
+                            <div class="accordion-body prn-bgsidebar">
+                                <div class="pr-fundo-li">
+                                    <ul class="nav flex-column pr-fundo-ul">
+
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-landmark"></i> Departamento</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-id-card-alt"></i> Usuários</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-shipping-fast"></i> Veículos</a> </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed prn-fonte bg-prn-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                <i class="fas fa-tasks"></i>&nbsp;  LANÇAMENTOS
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body prn-bgsidebar">
+                                <div class="pr-fundo-li">
+                                    <ul class="nav flex-column pr-fundo-ul">
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-map-marked-alt"></i>&nbsp;Viagens</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-money-check-alt"></i> Contas a Pagar</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-money-bill-wave"></i> Contas a Receber</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-shipping-fast"></i> Veículos</a> </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed  prn-fonte bg-prn-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                <i class="fas fa-cogs"></i> &nbsp;CONFIGURAÇÕES
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body prn-bgsidebar">
+                                <div>
+                                    <ul class="nav flex-column pr-fundo-ul">
+                                        <li class="nav-item"> <a class="nav-link active" href="@Url.Action("Index","ACesso")"><i class="fas fa-user-lock"></i>&nbsp;Acessos</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="@Url.Action("Index","Perfil")"><i class="fas fa-user-cog"></i>&nbsp;Perfis</a> </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="panelsStayOpen-config">
+                            <button class="accordion-button collapsed prn-fonte bg-prn-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseConfig" aria-expanded="false" aria-controls="panelsStayOpen-config">
+                                <i class="fas fa-door-open"></i> &nbsp; SAIR
+                            </button>
+
+
+                           
+
+                        </h2>
+                        <div id="panelsStayOpen-collapseConfig" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-config">
+                            <div class="accordion-body prn-bgsidebar">
+                                <div>
+                                    <ul class="nav flex-column pr-fundo-ul">
+                                        <li class="nav-item"> <a class="nav-link active" href="@Url.Action("LogOut", "Home") ">  <i class="fas fa-sign-out-alt"></i>&nbsp; Logout</a> </li>
+
+
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-prn border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary bg-prn border-0" id="sidebarToggle" onclick="mostrar(this)"><i class="fas fa-chevron-circle-right prn-mudar-seta"></i></button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+                            <li style="color:#ffffff !important;" class="nav-item active"><a style="color:#ffffff !important;" class="nav-link" href="https://www.tjtransportes.com">Site</a></li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffffff !important;"><i class="fas fa-user"></i> @Session["usuario"]</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Action</a>
+                                    <a class="dropdown-item" href="#!">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script src="~/Content/SideBar/js/scripts.js"></script>
+
+
+
+    <!--imagens-->
+    <script>
+        var onImg = "~/Content/Img/baixar-white.png";
+        var offImg = "~/Content/Img/baixar-white-cima.png";
+    </script>
+    <script>
+        function mostrar(e) {
+
+            var icone = document.querySelector(".prn-mudar-seta"); //obter o botão
+
+            if (icone.classList.contains("fa-chevron-circle-right")) { //se tem olho aberto
+                icone.classList.remove("fa-chevron-circle-right"); //remove classe olho aberto
+                icone.classList.add("fa-chevron-circle-left"); //coloca classe olho fechado
+            } else { //senão
+                icone.classList.remove("fa-chevron-circle-left"); //remove classe olho fechado
+                icone.classList.add("fa-chevron-circle-right"); //coloca classe olho aberto
+            }
+        }
+    </script>
+
+    <script>
+        (function ($) {
+            var refreshKeyPressed = false;
+            var modifierPressed = false;
+
+            var f5key = 116;
+            var rkey = 82;
+            var modkey = [17, 224, 91, 93];
+
+            //Verifica se submit
+            var submitting = false;
+            $('form').submit(function (e) {
+                submitting = true;
+            });
+
+            // verifica as chaves de atualização
+            $(document).bind(
+                'keydown',
+                function (evt) {
+                    // busca por atualização
+                    if (evt.which == f5key || window.modifierPressed && evt.which == rkey) {
+                        refreshKeyPressed = true;
+                    }
+
+                    // checa se há modificação
+                    if (modkey.indexOf(evt.which) >= 0) {
+                        modifierPressed = true;
+                    }
+                }
+            );
+
+            // verifica as chaves de atualização
+            $(document).bind(
+                'keyup',
+                function (evt) {
+                    // verifica a chave
+                    if (evt.which == f5key || evt.which == rkey) {
+                        refreshKeyPressed = false;
+                    }
+
+                    // checa se há modificação
+                    if (modkey.indexOf(evt.which) >= 0) {
+                        modifierPressed = false;
+                    }
+                }
+            );
+            $(window).bind('beforeunload', function (event) {
+                var message = "not refreshed";
+
+                //submit é falso, realiza ação
+                if (!submitting) {
+                    //Se atualizou entra aqui
+                    if (refreshKeyPressed) {
+                        message = "refreshed";
+
+                        //retorna a mensagem apenas para testes
+                        event.returnValue = message;
+                        return message;
+                    }
+
+                   $.ajax({
+                     url: BASE_URL + 'Home/Logout',
+                      type: 'POST'
+                   });
+
+                    event.returnValue = message;
+                    return message;
+                }
+
+            });
+        }(jQuery));
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".prn-alert").fadeOut("slow", function () {
+
+                    $(this).alert('close');
+                });
+
+            }, 5000);
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+
+/*Administrador*/
+.prn-fonte{
+    color:#ffffff !important;
+}
+.accordion-item:first-of-type .accordion-button {
+
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.accordion-button:focus {
+    z-index: 3 !important;
+    border:0px !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.0rem !important;
+    color:#fffff8 !important;
+    
+}
+
+.prn-bgsidebar{
+    color: #7b4141 !important;
+    background-color:#2c3b41 !important;
+}
+
+.accordion-button:hover {
+   border-left: 2px #357ca5 solid !important;
+}
+
+.nav-item:hover {
+    color:#ff0000;
+}
+
+.nav-link {
+    display: block !important;
+    padding: 0.5rem 1rem !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out !important;
+}
+.nav-link:hover {
+    display: block !important;
+    padding: 0.5rem 1rem !important;
+    color: #FE0002 !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out !important;
+}
+
+.prn-thead{
+    color:#ffffff;
+    font-weight:200;
+    font-size:0.8em;
+}
+
+.bg-prn {
+
+    background-color: #357ca5 !important;
+}
+
+.bg-prn-button {
+    color: #fffff8 !important;
+    background-color: #222d32;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #fffff8 !important;
+    background-color: #222d32;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.pr-td {
+    
+    border-color:#ccc !important;
+    border-style: none !important;
+    border-width: 0 !important;
+}
+.pagination-container{
+    display:none !important;
+}
+
+.prn-link:hover {
+    font-weight: 400;
+    color: #0000FD !important;
+}
+
+.prn-font-card-header{
+    color: #1c1c1c !important;
+    font-size: 1.1rem !important;
+    font-weight:600;
+}

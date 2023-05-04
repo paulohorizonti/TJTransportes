@@ -1,0 +1,352 @@
+﻿
+@using PagedList.Mvc
+@model PagedList.IPagedList<TJTransportesApp.Models.Acesso>
+
+
+
+@{ ViewBag.Title = "Index"; }
+
+<div class="row p-1">
+    <div class="card p-0">
+        <div class="card-header">
+            <span class="prn-font-card-header">Cadastro de Acesso</span> 
+            <a class="float-end dis-block btn btn-sm btn-primary create" href="@Url.Action("Incluir","Acesso")" ><i class="fas fa-plus-circle"></i>  Novo </a>
+        </div>
+        <div class="card-body">
+
+
+            @if (ViewBag.MessagemErro != "")
+            {
+                if (ViewBag.MessagemErro != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MessagemErro</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+            }
+
+            @if (ViewBag.MensagemDeletar != "")
+            {
+                if (ViewBag.MensagemDeletar == "Registro Excluído com sucesso")
+                {
+                    <div class="alert alert-success alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MensagemDeletar</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                if (ViewBag.MensagemDeletar == "Não foi possivel Excluir o registro")
+                {
+                    <div class="alert alert-danger alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MensagemDeletar</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+            }
+
+            @if (ViewBag.MensagemGravar != "")
+            {
+                if (ViewBag.MensagemGravar == "Já Existe um registro com essa descrição")
+                {
+                    <div class="alert alert-warning alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MensagemGravar</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+
+                if (ViewBag.MensagemGravar == "Registro salvo com sucesso!")
+                {
+                    <div class="alert alert-success alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MensagemGravar</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                if (ViewBag.MensagemGravar == "Não foi possivel salvar o registro")
+                {
+                    <div class="alert alert-danger alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MensagemGravar</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+
+                if (ViewBag.MensagemGravar == "Não é possivel Deletear esse registro. Há acessos usando este perfil!")
+                {
+                    <div class="alert alert-danger alert-dismissible fade show prn-alert" role="alert">
+                        <strong>@ViewBag.MensagemGravar</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+
+
+
+
+            }
+
+            @using (Html.BeginForm("Index", "Acesso", FormMethod.Get))
+            {
+
+                <div class="row">
+
+
+                    <div class="col-6">
+                        <label for="inputDescricao" class="form-label">Tabela</label>
+                        <input type="text" class="form-control" id="inputTabela">
+                    </div>
+                    <div class="col-4">
+                        <label for="inputDescricao" class="form-label">Perfil</label>
+                        <!--TODO-->
+                        <div class="input-group">
+
+
+                            <select class="form-select" id="ProcuraPerfil" name="ProcuraPerfil">
+
+                                @foreach (var item in ViewBag.Perfil)
+                                {
+                                    if (item.Id == ViewBag.FiltroCorrentePerfilInt)
+                                    {
+                                        <option selected value="@item.Id">@item.Descricao</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.Descricao</option>
+                                    }
+
+                                }
+                            </select> @*@Html.DropDownList("ProcuraSetor", new SelectList(ViewBag.SetorProdutos, "id", "descricao"), null, new { @class = "form-control form-control-sm dropdown prn-select" })*@
+
+                            <!--<div class="input-group-append">
+                        <button data-toggle="tooltip" data-placement="right" title="Localizar" class="btn btn-secondary pr-botoes-fundo" type="submit" id="button-addonCest">
+                            <i style="font-size:1.3em;" class="fas fa-search"></i>
+                        </button>
+                    </div>-->
+                            <!--fim do appende-->
+                        </div><!--fim div input-->
+                    </div>
+
+                    <div class="col-2">
+                        <label for="inputStatus" class="form-label">Status</label>
+                        <select id="inputStatus" name="inputStatus" class="form-select">
+                            @if (ViewBag.Status == 0)
+                            {
+
+
+                                <option value="0" selected>Ativo</option>
+
+
+                                <option value="1">Inativo</option>
+
+
+                                <option value="2">Todos</option>
+                            }
+                            else
+                            {
+                                if (ViewBag.Status == 1)
+                                {
+
+
+                                    <option value="0">Ativo</option>
+
+
+                                    <option value="1" selected>Inativo</option>
+
+
+                                    <option value="2">Todos</option>
+                                }
+                                else
+                                {
+                                    <option value="0">Ativo</option>
+
+
+                                    <option value="1">Inativo</option>
+
+
+                                    <option value="2" selected>Todos</option>
+                                }
+                            }
+
+                        </select>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row mt-2">
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success m-1 btn-sm" style="float: right; color: #ffffff;"><i class="fas fa-search"></i> &nbsp;Pesquisar</button>
+                        <button class="btn btn-secondary m-1 btn-sm dropdown-toggle" type="button" style="float: right; color: #ffffff;" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-upload"></i>&nbsp;Exportar</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Excel</a></li>
+                            <li><a class="dropdown-item" href="#">Pdf</a></li>
+
+                        </ul>
+                        <button type="submit" class="btn btn-warning m-1 btn-sm" style="float: right; color:#ffffff;"><i class="fas fa-broom"></i> &nbsp;Limpar</button>
+                    </div>
+                </div>}
+
+
+            <div class="row mt-2">
+                <!--Tabela-->
+                <table class="table  table-hover thead-dark table-striped table-borderles table-sm">
+
+                    <thead style="color:#ffffff;" class="bg-dark prn-thead">
+
+                        <tr>
+                            <th class="text-center" style="border-right:0.5px solid #ccc !important;">Ação</th>
+                            <th class="text-center" style="border-right:0.5px solid #ccc !important;">Id</th>
+                            <th class="text-center" style="border-right:0.5px solid #ccc !important;">Tabela</th>
+                            <th class="text-center" style="border-right:1px solid #ccc !important;">Visualizar</th>
+                            <th style="border-right:1px solid #ccc !important;" class="text-center">Incluir</th>
+                            <th style="border-right:1px solid #ccc !important;" class="text-center">Alterar</th>
+                            <th style="border-right:1px solid #ccc !important;" class="text-center">Excluir</th>
+
+                            <th class="text-center">Ativo</th>
+
+                        </tr>
+                    </thead>
+                    <!--Corpo da Tabela-->
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="pr-td">
+                                <td class="text-center" style="width: 2%; border-right: 1px solid #ccc !important;">
+                                    <a class="p-1 prn-link" href="@Url.Action("Edit", "Acesso", new { id = item.Id })"><i class="fas fa-edit prn-link" style="color: #222D32"></i></a>
+                                    <a class="p-1 prn-link" href="@Url.Action("Detalhes", "Acesso", new { id = item.Id })"><i class="fas fa-eye prn-link" style="color: #222D32"></i></a>
+                                    <a class="p-1 prn-link" href="@Url.Action("Deletar", "Acesso", new { id = item.Id })"><i class="fas fa-trash-alt prn-link" style="color: #222D32"></i></a>
+
+                                </td>
+                                <td class="text-center" style="width: 2%; border-right: 1px solid #ccc !important;" class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td style="width: 10%;  border-right: 1px solid #ccc !important;">
+                                    @Html.DisplayFor(modelItem => item.Tabela)
+                                </td>
+
+                                <td style="width: 2%;  border-right: 1px solid #ccc !important;" class="text-center">
+                                    @if (item.TabelaV == true)
+                                    {
+
+                                        <a class="p-1 text-center" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabvis = true })"><i style="font-size:1.5em;" class="fas fa-smile-beam"></i></a> }
+                                    else
+                                    {
+                                        <a class="p-1  text-center" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabvis = false })"><i style="font-size:1.5em;" class="far fa-frown-open"></i></a>}
+
+                                </td>
+
+                                <td style="width: 2%;  border-right: 1px solid #ccc !important;" class="text-center">
+                                    @if (item.TabelaI == true)
+                                    {
+
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabinc = true })"><i style="font-size:1.5em;" class="fas fa-smile-beam"></i></a> }
+                                    else
+                                    {
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabinc = false })"><i style="font-size:1.5em;" class="far fa-frown-open"></i></a>}
+
+                                </td>
+
+                                <td style="width: 2%;  border-right: 1px solid #ccc !important;" class="text-center">
+                                    @if (item.TabelaA == true)
+                                    {
+
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabAlt = true })"><i style="font-size:1.5em;" class="fas fa-smile-beam"></i></a> }
+                                    else
+                                    {
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabAlt = false })"><i style="font-size:1.5em;" class="far fa-frown-open"></i></a>}
+
+                                </td>
+
+                                <td style="width: 2%;  border-right: 1px solid #ccc !important;" class="text-center">
+                                    @if (item.TabelaE == true)
+                                    {
+
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabex = true })"><i style="font-size:1.5em;" class="fas fa-smile-beam"></i></a> }
+                                    else
+                                    {
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, tabex = false })"><i style="font-size:1.5em;" class="far fa-frown-open"></i></a>}
+
+                                </td>
+
+
+
+                                <td class="text-center" style="width: 2%;">
+
+                                    @if (item.Ativo == true)
+                                    {
+
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, atv = true })"><i style="font-size:1.5em;" class="fas fa-smile-beam"></i></a> }
+                                    else
+                                    {
+                                        <a class="p-1" href="@Url.Action("EditPerfil", "Acesso", new { id = item.Id, atv = false })"><i style="font-size:1.5em;" class="far fa-frown-open"></i></a>}
+
+                                </td>
+
+
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+
+
+
+
+
+                <!--Rodape-->
+                <div>
+                    <div style="float: right !important;" class="p-2">
+                        <p>
+                            <span> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount </span>
+                        </p>
+                    </div>
+
+                    <div style="float:right;" class="p-2 pr-fontalternativa">
+                        @Html.PagedListPager(
+                                                                                                                            Model, page => Url.Action("Index", new
+                                                                                                                            {
+                                                                                                                                page,
+                                                                                                                                filtroCorrente = ViewBag.FiltroCorrente,
+                                                                                                                                filtroEmpresa = ViewBag.FiltroCorrenteEmpresa,
+                                                                                                                                numeroLinhas = ViewBag.NumeroLinhas,
+                                                                                                                                inputStatus = ViewBag.Status
+                                                                                                                            }),
+                                                                                                                            new PagedListRenderOptions()
+                                                                                                                            {
+                                                                                                                                LiElementClasses = new List<string>
+                                                                                                                                {
+                                                      "page-item"
+    }
+                                                                                                                            }
+
+                                                                                                                            )
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="card-footer">
+            Total de itens:  @Model.TotalItemCount
+
+        </div>
+    </div>
+
+
+</div>
+
+

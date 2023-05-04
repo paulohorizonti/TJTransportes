@@ -1,0 +1,66 @@
+﻿@model TJTransportesApp.Models.Perfil
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="row p-1">
+    <div class="card p-0">
+        <div class="card-header">
+            <span class="prn-font-card-header">Cadastro de Perfis - ALTERAR</span>
+            @*<a class="float-end dis-block btn btn-sm btn-primary create" href="@Url.Action("Incluir","Perfil")"><i class="fas fa-plus-circle"></i>  Novo </a>*@
+        </div>
+        <!--Fomulario-->
+        @using (Html.BeginForm("Edit", "Perfil", FormMethod.Post, new { @class = "needs-validation" }))
+        {
+            <div class="card-body">
+
+
+
+
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <label class="form-label" for="Descricao">Descrição</label>
+                        @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger", role = "alert" })
+
+
+                    </div>
+                    <div class="col-2">
+                        <label class="form-label">Data da Alteração</label>
+                        @Html.TextBoxFor(model => model.DataAltFormatada, new { @class = "form-control", @readonly = "true" })
+                    </div>
+                </div>
+             
+
+
+               
+
+
+            </div><!--fim do card body-->
+            <div class="card-footer">
+                <div class="row">
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary m-1 btn-sm" style="color:#ffffff;"><i class="fas fa-save"></i> &nbsp;Salvar</button>
+
+                        <a class="btn btn-danger m-1 btn-sm" style="color:#ffffff;" href="@Url.Action("Index", "Perfil")"><i class="fas fa-ban"></i> &nbsp;Cancelar</a>
+                    </div>
+                </div>
+
+            </div>
+        }
+        </div><!--fim do card body-->
+    
+
+
+</div>
+
+

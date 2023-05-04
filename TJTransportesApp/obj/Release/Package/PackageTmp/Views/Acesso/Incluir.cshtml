@@ -1,0 +1,156 @@
+﻿@model TJTransportesApp.Models.ViewModel.AcessoViewModel
+@{
+    ViewBag.Title = "Incluir";
+}
+
+
+<div class="row p-1">
+    <div class="card p-0">
+        <div class="card-header">
+
+            <span class="prn-font-card-header">Cadastro de Acessos - INCLUIR</span>
+            @*<a class="float-end dis-block btn btn-sm btn-primary create" href="@Url.Action("Incluir","Perfil")"><i class="fas fa-plus-circle"></i>  Novo </a>*@
+        </div>
+        <!--Fomulario-->
+        @using (Html.BeginForm("Incluir", "Acesso", FormMethod.Post, new { @class = "needs-validation" }))
+        {
+    <div class="card-body">
+
+
+
+
+        @Html.AntiForgeryToken()
+        <div class="row">
+
+
+            <div class="col-lg-3 mb-3">
+                <label class="pr-fonte-label" for="idNivel">Perfil de  Acesso*</label>
+                @Html.DropDownListFor(m => m.IdPerfil, new SelectList(ViewBag.Perfil, "Id", "Descricao"), "Escolha o Perfil", new { @class = "form-control form-control-sm form-select", id = "idNivel", name = "idNivel" })
+                @Html.ValidationMessageFor(m => m.IdPerfil, "", new { @class = "text-danger", role = "alert" })
+
+            </div>
+
+            <div class="col-lg-2 mb-3">
+                <label class="pr-fonte-label" for="tabela">Tabela*</label>
+                @Html.DropDownListFor(m => m.Tabela, new SelectList(Enum.GetValues(typeof(TJTransportesApp.Models.TabelasEnum))), "Selecione uma Tabela", htmlAttributes: new { @class = "form-control form-control-sm  form-select", id = "tabela", name = "tabela" })
+                @Html.ValidationMessageFor(m => m.Tabela, "", new { @class = "text-danger", role = "alert" })
+            </div>
+
+            @*<div class="col-lg-3 mb-3">
+                <label class="pr-fonte-label" for="incluir">Incluir</label>
+
+                <div class="form-check">
+
+                    @Html.RadioButtonFor(m => m.TabelaI, "True", new { @class = "form-check-input" })
+
+
+
+                    <label class="form-check-label" for="incluir">
+                        Sim
+                    </label>
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(m => m.TabelaI, "False", new { @class = "form-check-input" })
+                    <label class="form-check-label" for="exampleRadios2"></label>
+                    Não
+                </div>
+
+
+            </div>*@
+            @*<div class="col-lg-3 mb-3">
+                <label class="pr-fonte-label form-check-label" for="incluir">Acessos</label>
+
+                <div class="form-check">
+
+                    @Html.CheckBoxFor(m => m.TabelaI, new { @class = "form-check-input" })
+
+
+
+                </div>
+                
+
+            </div>*@
+        <div class="col-lg-3 mb-3">
+            <label class="pr-fonte-label mb-2" for="incluir">Acessos</label><br/>
+
+            <div class="form-check form-check-inline">
+
+                @Html.CheckBoxFor(m => m.TabelaV, new { @class = "form-check-input" })
+                <label class="pr-fonte-label form-check-label" for="visualizar">Visualizar</label>
+            </div>
+            <div class="form-check form-check-inline">
+                @Html.CheckBoxFor(m => m.TabelaI, new { @class = "form-check-input" })
+                <label class="pr-fonte-label form-check-label" for="incluir">Incluir</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                @Html.CheckBoxFor(m => m.TabelaA, new { @class = "form-check-input" })
+                <label class="pr-fonte-label form-check-label" for="alterar">Alterar</label>
+            </div>
+            <div class="form-check form-check-inline">
+                @Html.CheckBoxFor(m => m.TabelaE, new { @class = "form-check-input" })
+                <label class="pr-fonte-label form-check-label" for="excluir">Excluir</label>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+            @*<div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Default radio
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+                Second default radio
+            </label>
+        </div>*@
+
+
+
+
+
+        </div>
+      
+        <div class="row">
+            <div class="col-12">
+                <label class="form-label" for="Observacao">Observação</label>
+                @Html.TextAreaFor(m => m.Obs, new { @class = "form-control", placeholder = "Digite a observação, caso haja.", name = "obs" })
+                @Html.ValidationMessageFor(m => m.Obs, "", new { @class = "text-danger", role = "alert" })
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div><!--fim do card body-->
+            <div class="card-footer">
+                <div class="row">
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary m-1 btn-sm" style="color:#ffffff;"><i class="fas fa-save"></i> &nbsp;Salvar</button>
+
+                        <a class="btn btn-danger m-1 btn-sm" style="color:#ffffff;" href="@Url.Action("Index", "Acesso")"><i class="fas fa-ban"></i> &nbsp;Cancelar</a>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+

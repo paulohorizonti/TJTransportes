@@ -1,0 +1,128 @@
+﻿
+@model TJTransportesApp.Models.Acesso
+
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+
+<div class="row p-1">
+    <div class="card p-0">
+        <div class="card-header">
+
+            <span class="prn-font-card-header"> Cadastro de Acesso - <strong style="color:#ff0000">DELETAR</strong></span>
+
+            @*<a class="float-end dis-block btn btn-sm btn-primary create" href="@Url.Action("Incluir","Perfil")"><i class="fas fa-plus-circle"></i>  Novo </a>*@
+        </div>
+        <div class="card-body">
+
+
+
+            <form>
+
+                <div class="row mb-2">
+                    <div class="alert alert-danger" role="alert">
+                        CONFIRME PARA DELETAR ESSE REGISTRO
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <label for="id" class="col-lg-2 col-form-label">Registro</label>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.Id, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Tabela</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.Tabela, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Data de Cadastro</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.DataCadFormatada, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Data de Alteração</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.DataAltFormatada, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Ativo</label>
+                    <div class="col-lg-2">
+                        @if (ViewBag.AcessoAtivo == true)
+                        {
+
+
+                            <input type="text" class="form-control" value="SIM" readonly />
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" value="NÃO" readonly />
+
+                        }
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </form>
+
+
+
+        </div><!--fim do card body-->
+        <div class="card-footer">
+            @using (Html.BeginForm("Deletar", "Acesso", FormMethod.Post))
+
+            {
+                <div class="row">
+
+                    <div class="col-2">
+                        <a class="btn btn-success m-1 btn-sm" style="color:#ffffff;" href="@Url.Action("Index", "Perfil")"><i class="fas fa-arrow-alt-circle-left"></i> &nbsp;Voltar</a>
+                    </div>
+
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-2" style="margin-left:-190px;">
+                        <button type="submit" value="Deletar Acesso" class="btn btn-danger  m-1 btn-sm"><i class="fas fa-check-circle"></i>&nbsp;Confirmar</button>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+            }
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+

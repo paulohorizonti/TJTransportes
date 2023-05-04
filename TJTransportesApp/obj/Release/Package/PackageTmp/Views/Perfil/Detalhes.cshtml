@@ -1,0 +1,175 @@
+﻿@model TJTransportesApp.Models.Perfil
+
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+
+<div class="row p-1">
+    <div class="card p-0">
+        <div class="card-header">
+           
+           
+            @*<a class="float-end dis-block btn btn-sm btn-primary create" href="@Url.Action("Incluir","Perfil")"><i class="fas fa-plus-circle"></i>  Novo </a>*@
+        </div>
+        <div class="card-body">
+
+
+
+            <form>
+
+
+                <div class="row mb-2">
+                    <label for="id" class="col-lg-2 col-form-label">Registro</label>
+                    <div class="col-lg-2">
+                        @Html.TextBoxFor(model => model.Id, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Descrição</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Data de Cadastro</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.DataCadFormatada, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Data de Alteração</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(model => model.DataAltFormatada, new { @class = "form-control", @readonly = "true" })
+                    </div>
+
+
+                </div>
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Ativo</label>
+                    <div class="col-lg-2">
+                        @if (ViewBag.Ativo == true)
+                        {
+
+
+                            <input type="text" class="form-control" value="SIM" readonly />
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" value="NÃO" readonly />
+
+                        }
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="row mb-2">
+                    <label for="descricao" class="col-lg-2 col-form-label">Acessos</label>
+                    <div class="col-lg-10">
+                        <table class="table table-sm table-striped">
+                            <tr>
+                                <th>Id</th>
+                                <th>Tabela</th>
+                                <th>Visualizar</th>
+                                <th>Incluir</th>
+                                <th>Alterar</th>
+                                <th>Excluir</th>
+                            </tr>
+                            @foreach (var item in ViewBag.Acessos)
+                            {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>
+                           
+                                @item.Tabela
+                            
+                            </td>
+                            <td>
+                                @if (@item.TabelaV == true)
+                                {
+                                    <span>SIM</span>
+                                }
+                                else
+                                {
+                                    <span>NÃO</span>
+                                }
+
+                            </td>
+                            <td>
+                                @if (@item.Tabelai == true)
+                                {
+                                    <span>SIM</span>
+                                }
+                                else
+                                {
+                                    <span>NÃO</span>
+                                }
+                               
+                            </td>
+                            <td>
+                                @if (@item.TabelaA == true)
+                                {
+                                    <span>SIM</span>
+                                }
+                                else
+                                {
+                                    <span>NÃO</span>
+                                }
+                               
+                            </td>
+                            <td>
+                                @if (@item.TabelaE == true)
+                                {
+                                    <span>SIM</span>
+                                }
+                                else
+                                {
+                                    <span>NÃO</span>
+                                }
+                              
+                            </td>
+                            
+                        </tr>
+                            }
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+
+            </form>
+            
+
+
+        </div><!--fim do card body-->
+        <div class="card-footer">
+           
+            <div class="row">
+
+                <div class="col-8">
+                    <a class="btn btn-success m-1 btn-sm" style="color:#ffffff;" href="@Url.Action("Index", "Perfil")"><i class="fas fa-arrow-alt-circle-left"></i> &nbsp;Voltar</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
